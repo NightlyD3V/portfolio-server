@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-server",
+  "version": "1.0.0",
+  "description": "node server to send email",
+  "homepage": "https://github.com/NightlyD3V/portfolio-server#readme",
+  "bugs": {
+    "url": "https://github.com/NightlyD3V/portfolio-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NightlyD3V/portfolio-server.git"
+  },
+  "license": "MIT",
+  "author": "Tyler Spaulding",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "nodemailer": "^6.9.16",
+    "vite": "^6.0.7"
+  }
+}
