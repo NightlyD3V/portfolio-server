@@ -1,30 +1,37 @@
 import nodemailer from "nodemailer";
+import express from "express";
 import dotenv from 'dotenv';
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // true for port 465, false for other ports
-  auth: {
-    user: "TylerSpaulding95@gmail.com",
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
-// async..await is not allowed in global scope, must use a wrapper
-async function main() {
-  // send mail with defined transport object
-  const info = await transporter.sendMail({
-    from: '"Maddison Foo Koch 👻" <TylerSpaulding95@gmail.com>', // sender address
-    to: "Tylerspaulding95@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for port 465, false for other ports
+    auth: {
+      user: "TylerSpaulding95@gmail.com",
+      pass: process.env.EMAIL_PASS,
+    },
   });
 
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-}
+const app = express();
+app.listen(3000, () => console.log("Listening on port 3000"));
 
-main().catch(console.error);
+app.get("/", (req, res) => {
+    res.send("Attempting to send message...");
+        // async..await is not allowed in global scope, must use a wrapper
+    async function main(req) {
+        // send mail with defined transport object
+        const info = await transporter.sendMail({
+        from: `<${req.email}>`, // sender address
+        to: "Tylerspaulding95@gmail.com", // list of receivers
+        subject: req.subject, // Subject line
+        text: req.text, // plain text body
+        });
+    
+        console.log("Message sent: %s", info.messageId);
+        res.send("Message sent: %s", info.messageId);
+    }
+    
+    main().catch(console.error);
+})
+
