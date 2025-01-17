@@ -26,7 +26,7 @@ const transporter = nodemailer.createTransport({
   async function main(req,res) {
     // send mail with defined transport object
     const info = await transporter.sendMail({
-    from: `<${req.body.email}>`, // sender address
+    from: req.body.email, // sender address
     to: "Tylerspaulding95@gmail.com", // list of receivers
     subject: req.body.name, // Subject line
     text: req.body.message, // plain text body
