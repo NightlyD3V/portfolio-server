@@ -32,8 +32,8 @@ const transporter = nodemailer.createTransport({
     text: req.body.message, // plain text body
     });
 
-    console.log(`Message sent:, ${info.messageId}`);
-    res.status(200).send(`Message sent:, ${info.messageId}`);
+    console.log(`Message sent with ID:, ${info.messageId}`);
+    res.status(200).send(`Message sent! 🥰`);
 }
 
 app.post("/email", async (req, res) => {
