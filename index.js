@@ -34,7 +34,7 @@ const transporter = nodemailer.createTransport({
 
     console.log("Sending email...")
     console.log(`Message sent with ID:, ${info.messageId}`);
-    res.status(200).send('Message sent! 🥰');
+    res.send('Message sent! 🥰');
 }
 
 app.post("/email", async (req, res) => {
