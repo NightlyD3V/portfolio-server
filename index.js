@@ -38,11 +38,9 @@ const transporter = nodemailer.createTransport({
 
 app.post("/email", async (req, res) => {
     console.log("endpoint hit", req.body);
-    res.send("Message sent!");
         // async..await is not allowed in global scope, must use a wrapper
         try {
             main(req, res).catch(console.error);
-            res.status(200).res.send("Message sent");
         } catch (error) {
             console.log(error);
         }
