@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const corsOptions = {
-    origin: 'https://nightlyd3v.github.io/portfolio-website/?fbclid=IwAR34i0RWMLFXOUaxh6awDa07NsHmeX4_GJd88V-h2IYbTXamjRVbWISKC90#three',  // Allow frontend from localhost:3000
+    origin: 'https://nightlyd3v.github.io',  // Allow frontend from localhost:3000
 };
 
 app.use(cors(corsOptions));
