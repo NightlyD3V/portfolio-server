@@ -14,22 +14,22 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for port 465, false for other ports
+    auth: {
+      user: "TylerSpaulding95@gmail.com",
+      pass: process.env.EMAIL_PASS,
+    },
+  });
   async function main(req) {
-    const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // true for port 465, false for other ports
-        auth: {
-          user: req.body.email,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
     // send mail with defined transport0 object
     const info = await transporter.sendMail({
-    from: req.body.email, // sender address
+    from: `<${req.body.email}>`, // sender address
     to: "Tylerspaulding95@gmail.com", // list of receivers
     subject: req.body.name, // Subject line
-    text: req.body.message, // plain text body
+    text: `You received an email from ${req.body.name} with the following message: ${req.body.message}`, // plain text body
     });
 }
 
