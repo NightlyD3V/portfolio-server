@@ -29,7 +29,7 @@ const transporter = nodemailer.createTransport({
     from: `<${req.body.email}>`, // sender address
     to: "Tylerspaulding95@gmail.com", // list of receivers
     subject: req.body.name, // Subject line
-    text: `You received an email from ${req.body.name} with the following message: ${req.body.message}`, // plain text body
+    text: `You received an email from ${req.body.email} with the following message: ${req.body.message}`, // plain text body
     });
 }
 
