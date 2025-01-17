@@ -33,19 +33,19 @@ const transporter = nodemailer.createTransport({
     });
 
     console.log("Sending email...")
-    console.log(`Message sent with ID:, ${info.messageId}`);
-    res.send('Message sent! 🥰');
+    console.log(`Message sent with ID:, ${info.messageId}`)
+    res.status(200).send("Message sent! 🥰")
 }
 
 app.post("/email", async (req, res) => {
     console.log("endpoint hit", req.body);
         // async..await is not allowed in global scope, must use a wrapper
         try {
-            main(req, res).catch(console.error);
+            main(req, res).catch(console.error)
         } catch (error) {
             console.log(error);
         }
 })
 
-app.listen(3000, () => console.log("Listening on port 3000"));
+app.listen(3000, () => console.log("Listening on port 3000"))
 
