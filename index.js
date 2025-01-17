@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const corsOptions = {
-    origin: 'https://nightlyd3v.github.io',  // Allow frontend from localhost:3000
+    origin: 'https://nightlyd3v.github.io',  // Allow frontend from this origin
 };
 
 app.use(cors(corsOptions));
